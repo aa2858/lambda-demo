@@ -12,8 +12,8 @@ provider:
     owneremail: aa2858@gmail.com
     projectID: P12345
     taskID: T12345
-  role: "arn:aws:iam::${self:custom.${self:custom.stage}.accountid}:role/cci-svc-lambda-multiservice"
-
+custom:
+  stage: dev
 
 package:
   individually: true
