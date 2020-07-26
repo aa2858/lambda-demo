@@ -22,7 +22,8 @@ package:
 
 functions:
   awesome-lambda:
-    handler: src/handler.py
+    handler: src/handler.main
+    name: onis-awesome-lambda-${self:custom.stage}
     description: Get a list of running sagemaker instances
     timeout: 60
     package:
