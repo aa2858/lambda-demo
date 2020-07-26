@@ -1,0 +1,31 @@
+service: onis-de-lambda
+
+provider:
+  name: aws
+  runtime: python3.7
+  stage: dev
+  stackTags:
+    environment: ${self:custom.stage}
+    team: dataengineeringteam
+    project: toolings
+    component: lambda
+    owneremail: aa2858@gmail.com
+    projectID: P12345
+    taskID: T12345
+  role: "arn:aws:iam::${self:custom.${self:custom.stage}.accountid}:role/cci-svc-lambda-multiservice"
+
+
+package:
+  individually: true
+  exclude:
+    - '**/**'
+
+functions:
+  awesome-lambda:
+    handler: src/handler.py
+    description: Get a list of running sagemaker instances
+    timeout: 60
+    package:
+      include:
+        - src/handler.py
+    runtime: python3.7
